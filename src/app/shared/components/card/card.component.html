@@ -1,0 +1,12 @@
+<mat-card class="example-card"  [style.backgroundColor]="color">
+    <mat-card-header>
+      <mat-card-title [style.color]="'white'">{{covidStatus}}</mat-card-title>
+      <mat-card-subtitle [style.color]="'white'">{{totalCount}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <h4 id="date-heading" [style.color]="'white'">From Dec 31, 2015 to {{date | date}}</h4>
+
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+  </mat-card>

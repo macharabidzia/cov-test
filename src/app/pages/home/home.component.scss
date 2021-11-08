@@ -1,0 +1,30 @@
+@import "src/app/styles/mixins";
+.fl {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  flex-flow: row wrap;
+}
+.container {
+  width: 80%;
+  margin: 0 auto;
+  app-table {
+    width: 100%;
+  }
+}
+app-bar-chart {
+  flex: 1;
+  height: 100%;
+}
+@include tablet {
+  .container {
+    width: 95%;
+    margin: 0 auto;
+    justify-content: center;
+    text-align: center;
+  }
+  .fl {
+    justify-content: center;
+    width: 100%;
+  }
+}

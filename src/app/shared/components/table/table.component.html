@@ -1,0 +1,56 @@
+<mat-form-field appearance="standard" MatFormFieldControl="autofilled">
+    <mat-label>Filter</mat-label>
+    <input id="filter-input" matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  </mat-form-field>
+  
+  <div id="table-container" class="mat-elevation-z3">
+    <table mat-table [dataSource]="dataSource" matSort>
+  
+      <!-- ID Column -->
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Country </th>
+        <td mat-cell *matCellDef="let row"> {{row.country}} </td>
+      </ng-container>
+      <ng-container matColumnDef="newConfirmed">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> New Confirmed</th>
+        <td mat-cell *matCellDef="let row"> {{row.newConfirmed}} </td>
+      </ng-container>
+      <ng-container matColumnDef="newDeaths">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> New Deaths</th>
+        <td mat-cell *matCellDef="let row"> {{row.newDeaths}} </td>
+      </ng-container>
+      <ng-container matColumnDef="newRecovered">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> New Recovered</th>
+        <td mat-cell *matCellDef="let row"> {{row.newRecovered}} </td>
+      </ng-container>
+      <ng-container matColumnDef="totalConfirmed">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Confirmed</th>
+        <td mat-cell *matCellDef="let row"> {{row.totalConfirmed}} </td>
+      </ng-container>
+      <ng-container matColumnDef="totalRecovered">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Recovered</th>
+        <td mat-cell *matCellDef="let row"> {{row.totalRecovered}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="totalDeaths">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Deaths </th>
+        <td mat-cell *matCellDef="let row"> {{row.totalDeaths}} </td>
+      </ng-container>
+
+      <!-- Progress Column -->
+  
+      <!-- Row shown when there is no matching data. -->
+      <!-- <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr> -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+          mat-row
+          (click)="handleTableRowClick(row)"
+          [class.demo-row-is-clicked]="clickedRows.has(row)"
+          *matRowDef="let row; columns: displayedColumns;"
+      ></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of countries"></mat-paginator>
+  </div>
